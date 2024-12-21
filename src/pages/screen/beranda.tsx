@@ -35,7 +35,7 @@ function Beranda() {
     queryFn: async () => {  
         const { data } = await axios.get(`https://gorest.co.in/public/v2/posts`, {
             headers: {
-            "Authorization": process.env.NEXT_PUBLIC_TOKEN
+            "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`
             },
         });
         
@@ -49,7 +49,7 @@ function Beranda() {
           if (id) {   
             const { data } = await axios.get(`https://gorest.co.in/public/v2/posts/${id}`, {
               headers: {
-                "Authorization": process.env.NEXT_PUBLIC_TOKEN
+                "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`
               }
             });
             
@@ -65,7 +65,7 @@ function Beranda() {
       mutationFn: async () => {
         const response = await axios.delete(`https://gorest.co.in/public/v2/posts/${id}`, {
             headers: {
-              "Authorization": process.env.NEXT_PUBLIC_TOKEN
+              "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`
             }
           });
         return response.data;
@@ -114,7 +114,7 @@ function Beranda() {
                 const { data } = await axios.patch(`https://gorest.co.in/public/v2/posts/${id}`, updateData, {
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": process.env.NEXT_PUBLIC_TOKEN
+                        "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`
                     }
                 });
 
@@ -157,7 +157,7 @@ function Beranda() {
                 const { data } = await axios.post(`https://gorest.co.in/public/v2/posts`, addData, {
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": process.env.NEXT_PUBLIC_TOKEN
+                        "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`
                     }
                 });
 

@@ -25,7 +25,7 @@ function Register() {
                 const { data } = await axios.post('https://gorest.co.in/public/v2/users', newUser, {
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": process.env.NEXT_PUBLIC_TOKEN
+                        "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`
                     }
                 });
 

@@ -27,7 +27,7 @@ const Login = () => {
             try {
                 const { data } = await axios.get(`https://gorest.co.in/public/v2/users/${dataUser.token}`, {
                     headers: {
-                        "Authorization": process.env.NEXT_PUBLIC_TOKEN
+                        "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`
                     }
                 });
                 return data;

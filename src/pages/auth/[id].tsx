@@ -38,7 +38,7 @@ function Token() {
           if (id) {   
             const { data } = await axios.get(`https://gorest.co.in/public/v2/users/${id}`, {
               headers: {
-                "Authorization": process.env.NEXT_PUBLIC_TOKEN
+                "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`
               }
             });
             

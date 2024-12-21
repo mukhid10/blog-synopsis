@@ -15,7 +15,7 @@ function DetailBlog() {
           if (id) {   
             const { data } = await axios.get(`https://gorest.co.in/public/v2/posts/${id}`, {
               headers: {
-                "Authorization": process.env.NEXT_PUBLIC_TOKEN
+                "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`
               }
             });
             
