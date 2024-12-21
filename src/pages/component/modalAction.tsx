@@ -10,7 +10,7 @@ interface ModalProps {
     setInitData: React.Dispatch<React.SetStateAction<{ title?: string; body?: string }>>;
   }
   
-  export const ModalAction: React.FC<ModalProps> = ({isModalOpen, setIsModalOpen, title, initData, setInitData, action}) => {
+  const ModalAction: React.FC<ModalProps> = ({isModalOpen, setIsModalOpen, title, initData, setInitData, action}) => {
     const { TextArea } = Input;
 
     const handleOk = () => {
@@ -86,3 +86,5 @@ interface ModalProps {
       </>
     );
   };
+
+  export default ModalAction;

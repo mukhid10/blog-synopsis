@@ -9,7 +9,7 @@ interface CustomModalProps {
   action: () => void;
 }
 
-export const CustomModal: React.FC<CustomModalProps> = ({isModalOpen, setIsModalOpen, title, desc, action}) => {
+const CustomModal: React.FC<CustomModalProps> = ({isModalOpen, setIsModalOpen, title, desc, action}) => {
 
   const handleOk = () => {
     action()
@@ -35,3 +35,5 @@ export const CustomModal: React.FC<CustomModalProps> = ({isModalOpen, setIsModal
     </>
     );
 };
+
+export default CustomModal;

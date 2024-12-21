@@ -2,10 +2,10 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { Button, notification, Table } from 'antd';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { CustomModal } from '../component/modal';
-import { ModalAction } from '../component/modalAction';
 import { DeleteOutlined, EditOutlined, ExportOutlined, FileAddOutlined } from '@ant-design/icons';
 import Link from 'next/link';
+import CustomModal from '../component/modal';
+import ModalAction from '../component/modalAction';
 
 
 interface Column {
