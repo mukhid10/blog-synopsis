@@ -17,6 +17,8 @@ interface Column {
 }
 
 function Beranda() {
+    const dataLocalStorage = JSON.parse(localStorage.getItem('user') || 'null');
+
     const [mark, setMark] = useState<boolean>(false);
     const [modalEdit, setModalEdit] = useState<boolean>(false);
     const [modalConfirmationDelete, setModalConfirmationDelete] = useState<boolean>(false);
@@ -43,7 +45,7 @@ function Beranda() {
         }
     });
 
-    const { isLoading: isLoadingUserById, error: errorUserById, data: dataUserById } = useQuery({
+    const { isLoading: isLoadingUserById, error: errorUserById, data: dataBlogById } = useQuery({
         queryKey: ['getByIdUser', id],
         queryFn: async () => {
           if (id) {   
@@ -89,17 +91,17 @@ function Beranda() {
     );
 
     useEffect(() => {
-        if (dataUserById?.title) {
+        if (dataBlogById?.title) {
             handleInitData();
         }
-    }, [dataUserById, mark]);
+    }, [dataBlogById, mark, dataLocalStorage]);
 
     const handleInitData = ()=>{
         setInitData({
             ...initData,
-            title: dataUserById?.title,
-            body: dataUserById?.body,
-            user_id: dataUserById?.user_id.toString()
+            title: dataBlogById?.title,
+            body: dataBlogById?.body,
+            user_id: dataLocalStorage?.id.toString()
         })        
     }  
 
