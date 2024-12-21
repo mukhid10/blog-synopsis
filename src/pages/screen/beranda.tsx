@@ -17,14 +17,13 @@ interface Column {
 }
 
 function Beranda() {
-    const dataLocalStorage = JSON.parse(localStorage.getItem('user') || 'null');
-
     const [mark, setMark] = useState<boolean>(false);
     const [modalEdit, setModalEdit] = useState<boolean>(false);
     const [modalConfirmationDelete, setModalConfirmationDelete] = useState<boolean>(false);
     const [modalAddData, setModalAddData] = useState<boolean>(false);
 
     const [id, setId] = useState<number>();
+    const [idUser, setIdUser] = useState<string>();
     const [initData, setInitData] = useState<object>({
         title: '',
         body: '',
@@ -91,17 +90,26 @@ function Beranda() {
     );
 
     useEffect(() => {
+        const dataLS = JSON.parse(localStorage.getItem('user') || 'null');
+        setInitData({
+            ...initData,
+            user_id: dataLS?.idUser
+        })
+      }, []);
+
+    useEffect(() => {
         if (dataBlogById?.title) {
             handleInitData();
         }
-    }, [dataBlogById, mark, dataLocalStorage]);
+    }, [dataBlogById, mark]);
 
     const handleInitData = ()=>{
+        
         setInitData({
             ...initData,
             title: dataBlogById?.title,
             body: dataBlogById?.body,
-            user_id: dataLocalStorage?.id.toString()
+            user_id: idUser
         })        
     }  
 
