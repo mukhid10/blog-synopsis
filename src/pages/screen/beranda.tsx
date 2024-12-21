@@ -17,7 +17,6 @@ interface Column {
 }
 
 function Beranda() {
-    const [isLoadingProcess, setIsLoadingProcess] = useState<boolean>(false);
     const [mark, setMark] = useState<boolean>(false);
     const [modalEdit, setModalEdit] = useState<boolean>(false);
     const [modalConfirmationDelete, setModalConfirmationDelete] = useState<boolean>(false);
@@ -105,7 +104,6 @@ function Beranda() {
     }  
 
     const handleDelete = () => {
-    setIsLoadingProcess(true);
     deleteUser();
     };
 
