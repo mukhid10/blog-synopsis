@@ -42,35 +42,37 @@ const Login = () => {
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (data?.id.toString() !== dataUser?.token) {
-            notification.error({
-                message: 'Wrong token',
-                description: 'wrong token, make sure you fill in the token correctly.',
-            });
-        }else if (data?.email !== dataUser?.email) {
-            notification.error({
-                message: 'Wrong email',
-                description: 'wrong email, make sure you fill in the email correctly.',
-            });
-        }else if (data?.id == dataUser?.token && data?.email === dataUser?.email) {
-            localStorage.setItem('user', JSON.stringify({
-                name: data.name,
-                email: data.email, 
-                isLogin: true
-            }));
-
-            router.push(`/screen/beranda`);
-
-            notification.success({
-                message: 'Login success',
-                description: 'The data you entered is correct, you are welcome to enter.',
-            });
-
-        }else{
-            notification.error({
-                message: 'Login failed',
-                description: 'login failed, double check to make sure you filled in your email and token correctly.',
-            });
+        if (dataUser?.token) {           
+            if (data?.id.toString() !== dataUser?.token) {
+                notification.error({
+                    message: 'Wrong token',
+                    description: 'wrong token, make sure you fill in the token correctly.',
+                });
+            }else if (data?.email !== dataUser?.email) {
+                notification.error({
+                    message: 'Wrong email',
+                    description: 'wrong email, make sure you fill in the email correctly.',
+                });
+            }else if (data?.id == dataUser?.token && data?.email === dataUser?.email) {
+                localStorage.setItem('user', JSON.stringify({
+                    name: data.name,
+                    email: data.email, 
+                    isLogin: true
+                }));
+    
+                router.push(`/screen/beranda`);
+    
+                notification.success({
+                    message: 'Login success',
+                    description: 'The data you entered is correct, you are welcome to enter.',
+                });
+    
+            }else{
+                notification.error({
+                    message: 'Login failed',
+                    description: 'login failed, double check to make sure you filled in your email and token correctly.',
+                });
+            }
         }
     }
 

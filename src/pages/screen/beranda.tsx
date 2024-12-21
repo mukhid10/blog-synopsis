@@ -163,13 +163,13 @@ function Beranda() {
 
                 return data;
             } catch (error) {
-                throw new Error('Gagal mengupdate pengguna');
+                throw new Error('Gagal menambah pengguna');
             }
         },
         onSuccess: (data) => {
             notification.success({
                 message: 'Add blog success',
-                description: 'Data blog has been updated successfully.',
+                description: 'Data blog has been add successfully.',
             });
             setModalAddData(false)
             refetch()
